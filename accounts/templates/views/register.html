@@ -1,0 +1,74 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Register{% endblock %}
+
+{% block 'body' %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h2>Register</h2>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <button type="submit" class="btn btn-primary w-100">Register</button>
+                    </form>
+                    
+                    <!-- Footer links -->
+                    <div class="form-footer mt-3 text-center">
+                        <small class="text-muted">
+                            Already have an account? 
+                            <a href="{% url 'login' %}">Sign in</a> 
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.container {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.card {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.form-footer {
+    border-top: 1px solid var(--border-color);
+    padding-top: 1rem;
+}
+
+.form-footer a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.form-footer a:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
+}
+
+.btn-primary.w-100 {
+    max-width: 90px;
+    margin-top: 1rem;
+    padding: 0.75rem;
+    font-weight: 500;
+}
+
+h2 {
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-bottom: 0;
+}
+</style>
+{% endblock %}

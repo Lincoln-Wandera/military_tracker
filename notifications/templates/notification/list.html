@@ -1,0 +1,27 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}Notifications{% endblock %}
+
+{% block 'body' %}
+<h2>Notifications</h2>
+{% if user.role == 'admin' %}
+  <a class="btn btn-success mb-3" href="{% url 'notification_create' %}">Send Notification</a>
+{% endif %}
+<table class="table table-hover">
+  <thead>
+    <tr><th>Subject</th><th>To</th><th>Status</th><th>Sent</th></tr>
+  </thead>
+  <tbody>
+    {% for n in notifications %}
+    <tr>
+      <td><a href="{% url 'notification_detail' n.pk %}">{{ n.subject }}</a></td>
+      <td>{{ n.family }}</td>
+      <td>{{ n.notification_type }}</td>
+      <td>{{ n.sent_at|date:"Y-m-d H:i" }}</td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="4">No notifications found.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

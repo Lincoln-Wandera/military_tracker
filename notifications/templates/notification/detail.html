@@ -1,0 +1,16 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}Notification{% endblock %}
+
+{% block 'body' %}
+<h2>{{ notif.subject }}</h2>
+<p><strong>Type:</strong> {{ notif.notification_type }}</p>
+<p><strong>Message:</strong></p>
+<p>{{ notif.message }}</p>
+<p><strong>Delivery Method:</strong> {{ notif.delivery_method }}</p>
+<p><strong>Sent At:</strong> {{ notif.sent_at }}</p>
+{% if notif.read_at %}
+<p><strong>Read At:</strong> {{ notif.read_at }}</p>
+{% endif %}
+<a class="btn btn-secondary" href="{% url 'notification_list' %}">Back</a>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+<title>Units</title>
+
+{% block 'body' %}
+<h2>Unit List</h2>
+<a class="btn btn-primary mb-3" href="{% url 'unit_create' %}">Add Unit</a>
+<table class="table table-striped">
+  <thead>
+    <tr><th>Name</th><th>Code</th><th>Commander</th><th>Actions</th></tr>
+  </thead>
+  <tbody>
+    {% for unit in units %}
+    <tr>
+      <td>{{ unit.unit_name }}</td>
+      <td>{{ unit.unit_code }}</td>
+      <td>{{ unit.commander_name }}</td>
+      <td>
+        <a href="{% url 'unit_detail' unit.pk %}">View</a> 
+        <a href="{% url 'unit_update' unit.pk %}">Edit</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

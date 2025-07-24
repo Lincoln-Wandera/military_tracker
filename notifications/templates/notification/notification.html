@@ -1,0 +1,169 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block 'body' %}
+<head>
+    <title>Military Tracker</title>
+    <style>
+        /* Additional styles for navigation cards */
+        .nav-card {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .nav-card:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 4px 12px var(--shadow);
+            transform: translateY(-2px);
+        }
+
+        .nav-card .card-body {
+            padding: 2rem;
+        }
+
+        .nav-card .card-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .nav-card .card-title {
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .nav-card .card-text {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .nav-card .btn {
+            width: 100%;
+        }
+
+        /* Main content styling */
+        .main-content {
+            padding: 3rem 0;
+        }
+
+        .page-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .page-header .lead {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .nav-card .card-body {
+                padding: 1.5rem;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+  <!-- Main Content -->
+    <div class="container main-content">
+        <div class="page-header">
+            <h1>Military Tracker Dashboard</h1>
+            <p class="lead">Manage and track soldier information efficiently</p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+            <!-- notification List Card -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card nav-card">
+                    <div class="card-body text-center">
+                        <div class="card-icon">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <h5 class="card-title">View All Notifications</h5>
+                        <p class="card-text">Browse and search through the complete list of notifications in the system.</p>
+                        <a href="{% url 'notification_list' %}" class="btn btn-primary">
+                            <i class="fas fa-list me-2"></i>
+                            View notifications
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Create notification Card -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card nav-card">
+                    <div class="card-body text-center">
+                        <div class="card-icon">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <h5 class="card-title">Create Notification</h5>
+                        <p class="card-text">Send a notification to the family members of the soldiers.</p>
+                        <a href="{% url 'notification_create' %}" class="btn btn-primary">
+                            <i class="fas fa-plus me-2"></i>
+                            Create Notification
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        <!-- Additional Information Section -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="fas fa-info-circle me-2"></i>
+                            System Information
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h6 class="text-primary">Quick Actions</h6>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-angle-right me-2"></i>View all soldiers</li>
+                                    <li><i class="fas fa-angle-right me-2"></i>Add new personnel</li>
+                                    <li><i class="fas fa-angle-right me-2"></i>Update records</li>
+                                    <li><i class="fas fa-angle-right me-2"></i>Generate reports</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4">
+                                <h6 class="text-primary">Features</h6>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-check me-2"></i>Real-time tracking</li>
+                                    <li><i class="fas fa-check me-2"></i>Secure data storage</li>
+                                    <li><i class="fas fa-check me-2"></i>Easy navigation</li>
+                                    <li><i class="fas fa-check me-2"></i>Responsive design</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4">
+                                <h6 class="text-primary">Support</h6>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-phone me-2"></i>24/7 Technical Support</li>
+                                    <li><i class="fas fa-envelope me-2"></i>Email Assistance</li>
+                                    <li><i class="fas fa-book me-2"></i>Documentation</li>
+                                    <li><i class="fas fa-question-circle me-2"></i>FAQ Section</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+{% endblock %}

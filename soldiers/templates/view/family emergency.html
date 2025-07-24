@@ -1,0 +1,31 @@
+{% extends 'base/base.html' %}
+{% load static %}
+<title>My Soldier Emergency Contacts</title>
+
+{% block 'body' %}
+<h2 class="mb-4">Emergency Contacts</h2>
+
+{% for soldier, contacts in contacts_by_soldier.items %}
+  <div class="card mb-4">
+    <div class="card-header">
+      {{ soldier.first_name }} {{ soldier.last_name }} ({{ soldier.service_id }})
+    </div>
+    <ul class="list-group list-group-flush">
+      {% for contact in contacts %}
+        <li class="list-group-item">
+          <strong>{{ contact.contact_name }}</strong> - {{ contact.relationship }}<br>
+          {{ contact.phone_number }}{% if contact.email %} |  {{ contact.email }}{% endif %}
+          {% if contact.is_primary %}
+            <span class="badge bg-success">Primary</span>
+          {% endif %}<br>
+          <a href="{% url 'edit_emergency_contact' contact.pk %}" class="btn btn-sm btn-outline-primary mt-2">Edit</a>
+        </li>
+      {% empty %}
+        <li class="list-group-item">No contacts available.</li>
+      {% endfor %}
+    </ul>
+  </div>
+{% empty %}
+  <p>No linked soldiers found.</p>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'base/base.html' %}
+{% load static %}
+<title>Soldier Details</title>
+
+{% block 'body' %}
+<h2>Soldier Details</h2>
+
+<div class="card mb-3">
+  <div class="card">
+    <h4 class="card-title">{{ soldier.rank }} {{ soldier.first_name }} {{ soldier.last_name }}</h4>
+    <p class="card-text"><strong>Service ID:</strong> {{ soldier.service_id }}</p>
+    <p class="card-text"><strong>National ID:</strong> {{ soldier.national_id }}</p>
+    <p class="card-text"><strong>Phone:</strong> {{ soldier.phone_number }}</p>
+    <p class="card-text"><strong>Email:</strong> {{ soldier.email }}</p>
+    <p class="card-text"><strong>Status:</strong> {{ soldier.current_status }}</p>
+    <p class="card-text"><strong>Unit:</strong> {{ soldier.unit }}</p>
+    <p class="card-text"><strong>Date of Birth:</strong> {{ soldier.date_of_birth }}</p>
+    <p class="card-text"><strong>Created:</strong> {{ soldier.created_at }}</p>
+  </div>
+  <div class="card mb-3">
+    <h4>Linked Family Members</h4>
+      {% if family_links %}
+        <ul class="list-group mb-3">
+          {% for link in family_links %}
+            <li class="list-group-item">
+              {{ link.user.get_full_name }} ({{ link.user.email }}) — {{ link.relationship }}
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>No family members linked.</p>
+      {% endif %}
+  </div>
+
+  <div class="card border-top">
+    <h4>Emergency Contacts</h4>
+    {% if soldier.emergency_contacts.all %}
+      <ul class="list-group mb-3">
+        {% for contact in soldier.emergency_contacts.all %}
+          <li class="list-group-item">
+            <strong>{{ contact.contact_name }}</strong> ({{ contact.relationship }})<br>
+            {{ contact.phone_number }}{% if contact.email %} | ✉️ {{ contact.email }}{% endif %}<br>
+            {% if contact.is_primary %}
+              <span class="badge bg-success">Primary</span>
+            {% endif %}
+            <div class="mt-1">
+              {% if user.role == 'admin' %}
+                <a href="{% url 'delete_emergency_contact' contact.id %}" class="btn btn-danger btn-sm">Delete</a>
+              {% endif %}
+              <a href="{% url 'edit_emergency_contact' contact.id %}" class="btn btn-outline-primary btn-sm">Edit</a>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>No emergency contacts added yet.</p>
+    {% endif %}
+
+    <a href="{% url 'add_emergency_contact' soldier.pk %}" class="btn btn-outline-primary btn-sm" style="max-width: 150px;" >➕ Add Contact</a>
+  </div>
+</div>
+<a href="{% url 'admin_link_family' %}" class="btn btn-outline-secondary btn-sm">➕ Manually Link Family</a>
+<a href="{% url 'soldier_status_history' soldier.pk %}" class="btn btn-info">View Status History</a>
+<a href="{% url 'soldier_update' soldier.pk %}" class="btn btn-primary">Edit</a>
+<a href="{% url 'soldier_list' %}" class="btn btn-secondary">Back to List</a>
+{% endblock %}

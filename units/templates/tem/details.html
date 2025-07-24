@@ -1,0 +1,15 @@
+{% extends 'base/base.html' %}
+{% load static %}
+<title>Unit Details</title>
+
+{% block 'body' %}
+<h2>{{ unit.unit_name }} Details</h2>
+<ul class="list-group">
+  <li class="list-group-item"><strong>Code:</strong> {{ unit.unit_code }}</li>
+  <li class="list-group-item"><strong>Base Location:</strong> {{ unit.base_location }}</li>
+  <li class="list-group-item"><strong>Commander:</strong> {{ unit.commander_name }}</li>
+  <li class="list-group-item"><strong>Description:</strong> {{ unit.description }}</li>
+</ul>
+<a href="{% url 'unit_update' unit.pk %}" class="btn btn-primary mt-3">Edit</a>
+<a href="{% url 'unit_list' %}" class="btn btn-secondary mt-3">Back to List</a>
+{% endblock %}

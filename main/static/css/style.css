@@ -1,0 +1,376 @@
+/* Dark Theme for Military Tracker - Bootstrap Compatible */
+:root {
+    /* Custom color palette */
+    --bs-primary: #238636;
+    --bs-secondary: #7d8590;
+    --bs-success: #238636;
+    --bs-info: #0969da;
+    --bs-warning: #fb8500;
+    --bs-danger: #da3633;
+    --bs-light: #21262d;
+    --bs-dark: #0d1117;
+    
+    /* Custom theme colors */
+    --primary-bg: #0d1117;
+    --secondary-bg: #161b22;
+    --tertiary-bg: #21262d;
+    --accent-bg: #30363d;
+    --border-color: #30363d;
+    --text-primary: #e6edf3;
+    --text-secondary: #7d8590;
+    --text-muted: #656d76;
+    --accent-color: #238636;
+    --accent-hover: #2ea043;
+    --navbar-bg: #010409;
+    --footer-bg: #0d1117;
+    --card-bg: #161b22;
+    --input-bg: #0d1117;
+    --input-border: #30363d;
+    --input-focus: #0969da;
+    --shadow: rgba(0, 0, 0, 0.3);
+    
+    /* Bootstrap overrides */
+    --bs-body-bg: #0d1117;
+    --bs-body-color: #e6edf3;
+    --bs-border-color: #30363d;
+    --bs-link-color: #238636;
+    --bs-link-hover-color: #2ea043;
+}
+
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+/* Global body styling */
+body {
+    background-color: var(--primary-bg);
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+/* Navigation customizations */
+.navbar-dark {
+    background-color: var(--navbar-bg);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px var(--shadow);
+}
+
+.navbar-brand {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.navbar-brand:hover,
+.navbar-brand:focus {
+    color: var(--accent-color);
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link:focus {
+    color: var(--accent-color);
+}
+
+.navbar-text {
+    color: var(--text-primary);
+}
+
+/* Form controls */
+.form-control {
+    background-color: var(--input-bg);
+    border-color: var(--input-border);
+    color: var(--text-primary);
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    background-color: var(--input-bg);
+    border-color: var(--input-focus);
+    color: var(--text-primary);
+    box-shadow: 0 0 0 0.2rem rgba(9, 105, 218, 0.25);
+}
+
+.form-control::placeholder {
+    color: var(--text-muted);
+}
+
+.form-select {
+    background-color: var(--input-bg);
+    border-color: var(--input-border);
+    color: var(--text-primary);
+}
+
+.form-select:focus {
+    background-color: var(--input-bg);
+    border-color: var(--input-focus);
+    color: var(--text-primary);
+    box-shadow: 0 0 0 0.2rem rgba(9, 105, 218, 0.25);
+}
+
+.form-label {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.form-text {
+    color: var(--text-muted);
+}
+
+/* Button customizations */
+.btn-primary {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-hover);
+    border-color: var(--accent-hover);
+    transform: translateY(-1px);
+}
+
+.btn-success {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.btn-success:hover {
+    background-color: var(--accent-hover);
+    border-color: var(--accent-hover);
+    transform: translateY(-1px);
+}
+
+.btn-outline-light {
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+.btn-outline-light:hover {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: white;
+}
+
+.btn-light {
+    background-color: var(--tertiary-bg);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+.btn-light:hover {
+    background-color: var(--accent-bg);
+    border-color: var(--accent-color);
+    color: var(--text-primary);
+}
+
+/* Card components */
+.card {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 1px 3px var(--shadow);
+    transition: all 0.3s ease;
+}
+.card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--shadow);
+}
+.card-header {
+    background-color: var(--tertiary-bg);
+    border-bottom-color: var(--border-color);
+    color: var(--text-primary);
+    font-weight: 600;
+
+}
+
+.card-body {
+    color: var(--text-primary);
+}
+
+/* Table styling */
+.table {
+    --bs-table-bg: var(--secondary-bg);
+    --bs-table-color: var(--text-primary);
+    --bs-table-border-color: var(--border-color);
+}
+
+.table th {
+    background-color: var(--tertiary-bg);
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) > td {
+    background-color: var(--tertiary-bg);
+}
+
+/* Alert components */
+.alert-success {
+    --bs-alert-bg: rgba(35, 134, 54, 0.1);
+    --bs-alert-border-color: var(--accent-color);
+    --bs-alert-color: #7ee787;
+}
+
+.alert-danger {
+    --bs-alert-bg: rgba(218, 54, 51, 0.1);
+    --bs-alert-border-color: var(--bs-danger);
+    --bs-alert-color: #ff7b72;
+}
+
+.alert-warning {
+    --bs-alert-bg: rgba(251, 133, 0, 0.1);
+    --bs-alert-border-color: var(--bs-warning);
+    --bs-alert-color: #ffa657;
+}
+
+.alert-info {
+    --bs-alert-bg: rgba(9, 105, 218, 0.1);
+    --bs-alert-border-color: var(--bs-info);
+    --bs-alert-color: #79c0ff;
+}
+
+/* Footer styling */
+.footer {
+    background-color: var(--footer-bg);
+    border-top: 1px solid var(--border-color);
+}
+
+.footer .text-muted {
+    color: var(--text-muted);
+}
+
+/* Home page video background */
+#myVideo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 0.3;
+}
+
+.text-center main {
+    position: relative;
+    z-index: 1;
+    background: rgba(13, 17, 23, 0.8);
+    padding: 3rem 2rem;
+    border-radius: 12px;
+    margin-top: 5rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+}
+
+.text-center h1 {
+    color: var(--text-primary);
+    font-weight: 700;
+    text-shadow: 0 2px 4px var(--shadow);
+}
+
+.text-center .lead {
+    color: var(--text-secondary);
+    font-size: 1.25rem;
+}
+
+/* Link styling */
+a {
+    color: var(--accent-color);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--accent-hover);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+p {
+    color: var(--text-secondary);
+}
+
+/* Form validation */
+.was-validated .form-control:valid {
+    border-color: var(--accent-color);
+}
+
+.was-validated .form-control:invalid {
+    border-color: var(--bs-danger);
+}
+
+.invalid-feedback {
+    color: var(--bs-danger);
+}
+
+/* Django Crispy Forms compatibility */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    color: var(--text-primary);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--secondary-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-bg);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--border-color);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .navbar-nav {
+        padding-top: 1rem;
+    }
+    
+    .text-center main {
+        margin-top: 2rem;
+        padding: 2rem 1rem;
+    }
+}
+
+/* Smooth transitions */
+.btn,
+.form-control,
+.form-select,
+.navbar-nav .nav-link {
+    transition: all 0.3s ease;
+}
+
+/* Focus states for accessibility */
+.btn:focus-visible,
+.form-control:focus,
+.form-select:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}

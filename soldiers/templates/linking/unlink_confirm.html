@@ -1,0 +1,27 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}Unlink Soldier{% endblock %}
+
+{% block 'body' %}
+
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card">
+        <div class="card-body text-center">
+          <h2 class="mb-3 text-danger">⚠️ Confirm Unlink</h2>
+          <p>Are you sure you want to unlink from <strong>{{ link.soldier }}</strong>?</p>
+
+          <form method="post">
+            {% csrf_token %}
+            <div class="d-flex justify-content-center gap-3 mt-4 flex-wrap">
+              <button type="submit" class="btn btn-danger">Yes, Unlink</button>
+              <a href="{% url 'family_dashboard' %}" class="btn btn-secondary">Cancel</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base/base.html' %}
+{% load static %}
+<title>Family Dashboard</title>
+
+{% block 'body' %}
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="mb-4 text-center">🪖 My Connected Soldiers</h2>
+
+          <div class="mb-4 text-end">
+            <a href="{% url 'link_to_soldier' %}" class="btn btn-success">➕ Link to a Soldier</a>
+          </div>
+
+          {% if family_links %}
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th>Unit</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for link in family_links %}
+                    <tr>
+                      <td>{{ link.soldier.first_name }} {{ link.soldier.last_name }}</td>
+                      <td>{{ link.soldier.current_status }}</td>
+                      <td>{{ link.soldier.unit }}</td>
+                      <td>
+                        <a href="{% url 'soldier_status_history' link.soldier.pk %}" class="btn btn-sm btn-outline-info">📜 View History</a>
+                        <a href="{% url 'unlink_soldier' link.pk %}" class="btn btn-sm btn-outline-danger">Unlink</a>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          {% else %}
+            <p class="text-muted text-center">No connected soldiers.</p>
+          {% endif %}
+
+          <div class="mt-4 text-center">
+            <a href="{% url 'notification_list' %}" class="btn btn-secondary">My Notifications</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

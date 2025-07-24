@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">  
+    <title>Military Tracker</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Custom Style Css -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet"> 
+</head>
+<body class="d-flex flex-column h-100">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'home_page' %}">Military Tracker</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    {% if user.is_authenticated %}
+                        {% if user.role == 'admin' or user.role == 'superuser' %}
+                            <li class="nav-item"><a href="{% url 'soldier_home' %}" class="nav-link">Soldiers</a></li>
+                            <li class="nav-item"><a href="{% url 'unit_home' %}" class="nav-link">Units</a></li>
+                            <li class="nav-item"><a href="{% url 'mission_home' %}" class="nav-link">Missions</a></li>
+                            <li class="nav-item"><a href="{% url 'notification_home' %}" class="nav-link">Notifications</a></li>
+                        {% elif user.role == 'family' %}
+                            <li class="nav-item"><a href="{% url 'family_dashboard' %}" class="nav-link">My Dashboard</a></li>
+                        {% endif %}
+                    {% endif %}
+                </ul>
+                <div class="d-flex">
+                   {% if user.is_authenticated %}
+
+                        <div class="dropdown show">
+                            <button class="btn btn-transparent dropdown-toggle" type="button"  data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ user.username }}
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-transparent dropdown-menu-end" aria-labelledby="profileDropdown">
+                                <a class="dropdown-item" href="{% url 'edit_profile' %}">Edit Profile</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                            </div>
+                        </div>
+                    {% else %}
+                        <a href="{% url 'login' %}" class="btn btn-outline-light btn-sm me-2">Login</a>
+                        <a href="{% url 'register' %}" class="btn btn-light btn-sm">Register</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+
+        {% block 'body' %}
+        {% endblock %}
+        
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="container text-center">
+            <span class="text-muted">Military Tracking System &copy; {% now "Y" %}</span>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

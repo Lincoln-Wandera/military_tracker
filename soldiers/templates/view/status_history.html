@@ -1,0 +1,81 @@
+
+{% extends 'base/base.html' %}
+<title>Status History</title>
+
+{% block 'body' %}
+<div class="container py-5">
+  {% if request.user.role == 'admin' %}
+  <div class="row justify-content-center">
+    <div class="col-lg-11">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="mb-4 text-center">
+            Status History: {{ soldier.rank }} {{ soldier.first_name }} {{ soldier.last_name }}
+          </h2>
+
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped mt-3">
+              <caption class="text-center fw-semibold">Status Change Log</caption>
+              <thead>
+                <tr>
+                  <th>Status</th>
+                  <th>Description</th>
+                  <th>Date</th>
+                  <th>Updated By</th>
+                  <th>Remarks</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for entry in history %}
+                <tr>
+                  <td>{{ entry.status }}</td>
+                  <td>{{ entry.status_description }}</td>
+                  <td>{{ entry.status_date|date:"Y-m-d H:i" }}</td>
+                  <td>{{ entry.updated_by }}</td>
+                  <td>{{ entry.remarks }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                  <td colspan="5" class="text-center text-muted">No history records found.</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+
+          <div class="text-center mt-4">
+            <a href="{% url 'soldier_detail' soldier.pk %}" class="btn btn-secondary">Back to Soldier</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% elif request.user.role == 'family' %}
+  <div class="row justify-content-center">
+    <div class="col-lg-11">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="mb-4 text-center">
+              Status History for {{ soldier.first_name }} {{ soldier.last_name }}
+          </h2>
+          {% if history %}
+            <ul class="list-group mt-3">
+              {% for entry in history %}
+                <li class="list-group-item">
+                  <strong>{{ entry.status }}</strong> {{ entry.status_description }} — {{ entry.status_date|date:"Y-m-d" }} - {{ entry.updated_by }} - {{ entry.remarks }}
+                </li>
+              {% endfor %}
+            </ul>
+          {% else %}
+            <p class="text-muted text-center">No status history available.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}
+
+
