@@ -5,30 +5,39 @@
 {% block title %}Register{% endblock %}
 
 {% block 'body' %}
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-6 col-lg-5">
-            <div class="card">
-                <div class="card-header text-center">
-                    <h2>Register</h2>
-                </div>
-                <div class="card-body">
-                    <form method="post">
-                        {% csrf_token %}
-                        {{ form|crispy }}
-                        <button type="submit" class="btn btn-primary w-100">Register</button>
-                    </form>
-                    
-                    <!-- Footer links -->
-                    <div class="form-footer mt-3 text-center">
-                        <small class="text-muted">
-                            Already have an account? 
-                            <a href="{% url 'login' %}">Sign in</a> 
-                        </small>
+<div>
+    <video autoplay muted loop id="myVideo">
+        <source src="{% static 'videos/bg.mp4' %}" type="video/mp4">
+    </video>
+    <div class="d-flex w-100 h-100 p-3 mx-auto flex-column main-content main-content-transparent">
+        <main class="px-3">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-6 col-lg-5">
+                        <div class="card">
+                            <div class="card-header text-center">
+                                <h2>Register</h2>
+                            </div>
+                            <div class="card-body">
+                                <form method="post">
+                                    {% csrf_token %}
+                                    {{ form|crispy }}
+                                    <button type="submit" class="btn btn-primary w-100">Register</button>
+                                </form>
+                                
+                                <!-- Footer links -->
+                                <div class="form-footer mt-3 text-center">
+                                    <small class="text-muted">
+                                        Already have an account? 
+                                        <a href="{% url 'login' %}">Sign in</a> 
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </main>
     </div>
 </div>
 
