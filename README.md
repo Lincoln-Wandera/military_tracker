@@ -30,7 +30,7 @@ A secure, role-based Django web application for tracking soldiers, managing miss
 - Password reset and account management via **SendGrid**
 - Uses `.env` for secure credentials via `python-decouple`
 
-## 🛠️ Tech Stack
+## 🛠 Tech Stack
 Django - Core backend framework 
 PostgreSQL - Production-grade database 
 Bootstrap & Crispy Forms - UI styling 
