@@ -86,13 +86,14 @@ WSGI_APPLICATION = 'military_system.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.parse(
-        config("DATABASE_URL"),
-        conn_max_age=600,
-        ssl_require=True  # Enforces SSL for Render
-    )
-}
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+            'sslmode': 'require',
+        }
+    }
 
+DATABASES['default'] = dj_database_url.parse(config("DATABASE_URL"))
 
 
 
@@ -165,4 +166,5 @@ EMAIL_USE_TLS = config("EMAIL_USE_TLS", cast=bool, default=False)
 EMAIL_HOST_USER = config("EMAIL_HOST_USER", default="")
 EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD",default="")
 DEFAULT_FROM_EMAIL = config("DEFAULT_FROM_EMAIL", default="webmaster@localhost")
+
 
